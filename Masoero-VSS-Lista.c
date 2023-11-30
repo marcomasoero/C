@@ -78,10 +78,42 @@ int main(){
     printf("\nNumero di elementi: %d", calcolaLunghezza(lista));
     printf("\nNumero di elementi con ricorsiva: %d", ricorsivaLunghezza(lista, lung));
 
-    printf("\nNumero di elementi:");
+    printf("\nNumero di elementi: ");
     stampaLista(lista);
-    printf("\nNumero di elementi con ricorsiva:");
+    printf("\nNumero di elementi con ricorsiva: ");
     stampaListaRicorsiva(lista);
+
+    Node* head;
+    head = (Node*)malloc(sizeof(Node));
+    head->next = lista;
+    head->valore = 10;
+    lista = head;
+
+    printf("\n10 Aggiunto alla Head: ");
+    stampaLista(lista);
+
+    l = lista;
+    while(l->next != NULL){
+        l = l->next;
+    }
+    l->next = (Node*)malloc(sizeof(Node));
+    l = l->next;
+    l->valore = 10;
+    l->next = NULL;
+
+    printf("\n10 Aggiunto alla fine: ");
+    stampaLista(lista);
+
+    l = lista;
+    Node *l2 = l;
+    while(l->next != NULL){
+        l2 = l;
+        l = l->next;
+    }
+    l2->next = NULL;
+
+    printf("\n10 Rimosso dalla fine: ");
+    stampaLista(lista);
 
     return 0;
 }
